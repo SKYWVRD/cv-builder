@@ -44,8 +44,19 @@ body {
     margin-left: 10px;
 }
 
+
 .personal-picture > img{
     border-radius: 50%;
+    transition: 0.25s;
+}
+
+.personal-picture > img:hover {
+   border-radius: 25%;
+}
+
+
+.submit-button {
+    margin-top: 10px;
 }
 
 
