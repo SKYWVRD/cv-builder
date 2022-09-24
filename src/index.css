@@ -1,0 +1,53 @@
+body {
+    margin: 0
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.header {
+    background-color: grey;
+    flex: auto;
+}
+
+.section-heading{
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.personal{
+    display: flex;
+    flex-direction: column;
+     
+}
+
+.personal-info{
+    display: flex;
+}
+
+.personal-form {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+
+
+.header-text {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 20px;
+    font-size: 25px;
+}
