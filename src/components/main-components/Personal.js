@@ -14,12 +14,12 @@ class Personal extends Component {
                         <img src={defaultImage} alt='Candidate'/>
                     </div>
                     <form className='personal-form'>
-                        <label htmlFor='name'>Name</label>
+                        <label htmlFor='name'>Name:</label>
                         <input
                             name='name' 
                             type='Text'
                         />
-                        <label htmlFor='surname'>Surname</label>
+                        <label htmlFor='surname'>Surname:</label>
                         <input
                             name='surname'
                             type='Text'
