@@ -20,11 +20,15 @@ body {
 
 .main {
     display: flex;
+    margin: 10px;
+}
+
+.personal, .education {
     flex-direction: column;
     border: 1px solid black;
-    margin: 10px;
     border-radius: 5px;
     padding: 5px;
+    flex-grow: 1;
 }
 
 .personal{

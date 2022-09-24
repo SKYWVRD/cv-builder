@@ -21,11 +21,9 @@ function Personal () {
 
     }
 
-
     const handleSave = () => {
         setIsSaved(true)
     }
-
 
     const handleEdit = () => {
         setIsSaved(false)
@@ -33,7 +31,6 @@ function Personal () {
             ...prev
         }))
     }
-
 
     return (
             <div className='personal'>
