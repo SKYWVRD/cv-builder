@@ -55,11 +55,11 @@ const Display = ( { personalInfo, handleEdit}) => {
     return(
         <div className='personal-form'>
                 <label htmlFor='name'>Name:</label>
-                <div className='name'>{personalInfo.name}</div>
+                <div className='personal-display'>{personalInfo.name}</div>
                 <label htmlFor='surname'>Surname:</label>
-                <div className='name'>{personalInfo.surname}</div>
+                <div className='personal-display'>{personalInfo.surname}</div>
                 <label htmlFor='Email'>Email Address:</label>
-                <div className='name'>{personalInfo.email}</div>
+                <div className='personal-display'>{personalInfo.email}</div>
                 <input className='edit-button'
                     name='submit'
                     type='button'

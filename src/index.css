@@ -29,13 +29,18 @@ body {
     border: 1px solid black;
     border-radius: 5px;
     padding: 5px;
-    width: 1240px;
+    width: 100%;
+    max-width: 1240px;
 }
 
 .personal{
     display: flex;
     flex-direction: column;
      
+}
+
+.personal-display {
+    font-size: 20px;
 }
 
 .personal-info{
