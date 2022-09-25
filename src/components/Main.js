@@ -5,6 +5,7 @@ const Main = () => {
     return (
         <div className ='main'>
             <Personal />
+            <Education />
         </div>
     )
 }

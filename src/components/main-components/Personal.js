@@ -60,7 +60,7 @@ const Display = ( { personalInfo, handleEdit}) => {
                 <div className='personal-display'>{personalInfo.surname}</div>
                 <label htmlFor='Email'>Email Address:</label>
                 <div className='personal-display'>{personalInfo.email}</div>
-                <input className='edit-button'
+                <input className='submit-button'
                     name='submit'
                     type='button'
                     value='Edit Info'

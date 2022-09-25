@@ -25,6 +25,10 @@ body {
     align-items: center;
 }
 
+.main > * {
+    margin-bottom: 10px;
+}
+
 .personal, .education {
     border: 1px solid black;
     border-radius: 5px;
@@ -47,7 +51,7 @@ body {
     display: flex;
 }
 
-.personal-form {
+.personal-form, .education-form {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -67,6 +71,8 @@ body {
 
 .submit-button {
     margin-top: 10px;
+    align-self: flex-end;
+    width: 100px;
 }
 
 
