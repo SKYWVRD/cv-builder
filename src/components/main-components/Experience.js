@@ -60,7 +60,7 @@ const Form = ( { experienceInfo, isSaved, handleSaved, handleChange }) => {
                 <input
                     name='positionHeld'
                     type='text'
-                    value={experienceInfo.companyName}
+                    value={experienceInfo.positionHeld}
                     onChange={handleChange}
                 />
             }
@@ -86,6 +86,12 @@ const Form = ( { experienceInfo, isSaved, handleSaved, handleChange }) => {
                     onChange={handleChange}
                 /> 
             }
+            <input className='submit-button'
+                name='submit'
+                type='button'
+                value={isSaved? 'Edit Info': 'Save Info'}
+                onClick={handleSaved}
+            />
 
         </form>
     )
