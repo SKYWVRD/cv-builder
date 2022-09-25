@@ -42,6 +42,7 @@ function Education () {
 
 function Form ( {isSaved, educationInfo, handleChange, handleSaved} ) {
     
+    //TODO: Add ability to add more than one qualification
 
     return (
     <div className='education-form'>

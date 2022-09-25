@@ -71,6 +71,8 @@ const Display = ( { personalInfo, handleEdit}) => {
 }
 
 const Form = ( { personalInfo, handleChange, handleSave }) => {
+    //TODO: Update to be more dynamic so you have a single Form component without a display component
+
     return (
         <form className='personal-form'>
             <label htmlFor='name'>Name:</label>
