@@ -32,7 +32,7 @@ function Experience () {
                 Work Experience
             </div>
             <div className='experience-info'>
-                <Form />
+                <Form experienceInfo={experienceInfo} isSaved={isSaved} handleSaved={handleSaved} handleChange={handleChange}/>
             </div>
         </div>
     )
@@ -41,7 +41,7 @@ function Experience () {
 
 const Form = ( { experienceInfo, isSaved, handleSaved, handleChange }) => {
     return (
-        <form>
+        <form className='experience-form'>
             <label htmlFor='companyName'>Company Name:</label>
             {
                 isSaved?
@@ -53,18 +53,18 @@ const Form = ( { experienceInfo, isSaved, handleSaved, handleChange }) => {
                     onChange={handleChange}
                 />
             }
-            <label htmlFor='positionHeld'>{experienceInfo.positionHeld}</label>'
+            <label htmlFor='positionHeld'>Position Held:</label>
             {
                 isSaved?
                 <div className='positionHeld'>{experienceInfo.positionHeld}</div>:
                 <input
                     name='positionHeld'
                     type='text'
-                    value={exerienceInfo.companyName}
+                    value={experienceInfo.companyName}
                     onChange={handleChange}
                 />
             }
-            <label htmlFor='dateStarted'>Start Date</label>'
+            <label htmlFor='dateStarted'>Start Date</label>
             {
                 isSaved?
                 <div className='dateStarted'>{experienceInfo.dateStarted}</div>:
@@ -75,7 +75,7 @@ const Form = ( { experienceInfo, isSaved, handleSaved, handleChange }) => {
                     onChange={handleChange}
                 /> 
             }
-            <label htmlFor='dateFinished'>End Date</label>'
+            <label htmlFor='dateFinished'>End Date</label>
             {
                 isSaved?
                 <div className='dateFinished'>{experienceInfo.dateFinished}</div>:

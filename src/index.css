@@ -51,7 +51,7 @@ body {
     display: flex;
 }
 
-.personal-form, .education-form {
+.personal-form, .education-form, .experience-form{
     display: flex;
     flex-direction: column;
     flex-grow: 1;
