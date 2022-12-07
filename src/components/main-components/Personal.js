@@ -1,5 +1,22 @@
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import defaultImage from "../../images/default-image.png";
+
+personalInfoReducer = (state, action) => {
+
+  if(action.name === 'name'){
+    return{
+      name: action.value,
+      surname: state.surname,
+      email: state.email,
+    }
+  }
+
+  return {
+    name: "",
+    surname: "",
+    email: "",
+  };
+};
 
 function Personal() {
   const [isSaved, setIsSaved] = useState(false);
@@ -9,12 +26,27 @@ function Personal() {
     email: "",
   });
 
+  const [personInfoState, dispatchPersonalInfo] = useReducer(
+    personalInfoReducer,
+    {
+      name: "",
+      surname: "",
+      email: "",
+    }
+  );
+
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setInfo((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+
+    dispatchPersonalInfo({
+      type: name,
+      val: value,
+    });
+
+    // setInfo((prev) => ({
+    //   ...prev,
+    //   [name]: value,
+    // }));
   };
 
   const handleSave = () => {
