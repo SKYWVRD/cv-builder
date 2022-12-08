@@ -1,14 +1,56 @@
-import { useState } from "react";
+import { useState, useReducer } from "react";
+
+const experienceReducer = (state, action) => {
+  
+  let companyName = state.companyName
+  let positionHeld = state.positionHeld
+  let dateStarted = state.dateStarted
+  let dateEnded = state.dateEnded
+  let reference = state.reference
+  
+  switch(action.type){
+    case "companyName":
+      companyName = action.val;
+      break;
+    case "positionHeld":
+      positionHeld = action.val;
+      break;
+    case "dateStarted":
+      dateStarted = action.val;
+    case "dateEnded":
+      dateEnded = action.val;
+    case reference:
+      reference = action.val;
+  }
+  return {
+    companyName: state.companyName,
+    positionHeld: state.positionHeld,
+    dateStarted: state.dateStarted,
+    dateEnded: state.dateEnded,
+    reference: state.reference,
+  };
+};
 
 function Experience() {
   const [isSaved, setIsSaved] = useState(false);
-  const [experienceInfo, setInfo] = useState({
-    companyName: "",
-    positionHeld: "",
-    dateStarted: "",
-    dateEnded: "",
-    reference: "",
-  });
+  // const [experienceInfo, setInfo] = useState({
+  //   companyName: "",
+  //   positionHeld: "",
+  //   dateStarted: "",
+  //   dateEnded: "",
+  //   reference: "",
+  // });
+
+  const [experienceInfoState, dispatchExperienceInfo] = useReducer(
+    experienceReducer,
+    {
+      companyName: "",
+      positionHeld: "",
+      dateStarted: "",
+      dateEnded: "",
+      reference: "",
+    }
+  );
 
   const handleSaved = () => {
     setIsSaved(!isSaved);
@@ -16,10 +58,15 @@ function Experience() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setInfo((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+
+    dispatchExperienceInfo({
+      type: name,
+      val: value,
+    });
+    // setInfo((prev) => ({
+    //   ...prev,
+    //   [name]: value,
+    // }));
   };
 
   return (
@@ -27,7 +74,7 @@ function Experience() {
       <div className="section-heading">Work Experience</div>
       <div className="experience-info">
         <Form
-          experienceInfo={experienceInfo}
+          experienceInfoState={experienceInfoState}
           isSaved={isSaved}
           handleSaved={handleSaved}
           handleChange={handleChange}
@@ -37,50 +84,50 @@ function Experience() {
   );
 }
 
-const Form = ({ experienceInfo, isSaved, handleSaved, handleChange }) => {
+const Form = ({ experienceInfoState, isSaved, handleSaved, handleChange }) => {
   return (
     <form className="experience-form">
       <label htmlFor="companyName">Company Name:</label>
       {isSaved ? (
-        <div className="companyName">{experienceInfo.companyName}</div>
+        <div className="companyName">{experienceInfoState.companyName}</div>
       ) : (
         <input
           name="companyName"
           type="text"
-          value={experienceInfo.companyName}
+          value={experienceInfoState.companyName}
           onChange={handleChange}
         />
       )}
       <label htmlFor="positionHeld">Position Held:</label>
       {isSaved ? (
-        <div className="positionHeld">{experienceInfo.positionHeld}</div>
+        <div className="positionHeld">{experienceInfoState.positionHeld}</div>
       ) : (
         <input
           name="positionHeld"
           type="text"
-          value={experienceInfo.positionHeld}
+          value={experienceInfoState.positionHeld}
           onChange={handleChange}
         />
       )}
       <label htmlFor="dateStarted">Start Date</label>
       {isSaved ? (
-        <div className="dateStarted">{experienceInfo.dateStarted}</div>
+        <div className="dateStarted">{experienceInfoState.dateStarted}</div>
       ) : (
         <input
           name="dateStarted"
           type="date"
-          value={experienceInfo.dateStarted}
+          value={experienceInfoState.dateStarted}
           onChange={handleChange}
         />
       )}
       <label htmlFor="dateFinished">End Date</label>
       {isSaved ? (
-        <div className="dateFinished">{experienceInfo.dateFinished}</div>
+        <div className="dateFinished">{experienceInfoState.dateFinished}</div>
       ) : (
         <input
           name="dateFinished"
           type="date"
-          value={experienceInfo.dateFinished}
+          value={experienceInfoState.dateFinished}
           onChange={handleChange}
         />
       )}
