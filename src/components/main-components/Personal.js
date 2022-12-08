@@ -20,29 +20,7 @@ const personalInfoReducer = (state, action) => {
     default:
       console.log(`Could not find action type ${action.type}`);
   }
-
-  // if (action.type === "name") {
-  //   return {
-  //     name: action.val,
-  //     surname: state.surname,
-  //     email: state.email,
-  //   };
-  // }
-  // if (action.type === "surname") {
-  //   return {
-  //     name: state.name,
-  //     surname: action.val,
-  //     email: state.email,
-  //   };
-  // }
-  // if (action.type === "email") {
-  //   return {
-  //     name: state.name,
-  //     surname: state.surname,
-  //     email: action.val,
-  //   };
-  // }
-
+  
   return {
     name: name,
     surname: surname,
