@@ -33,11 +33,6 @@ const personalInfoReducer = (state, action) => {
 
 function Personal() {
   const [isSaved, setIsSaved] = useState(false);
-  // const [personalInfo, setInfo] = useState({
-  //   name: "",
-  //   surname: "",
-  //   email: "",
-  // });
 
   const [personalInfoState, dispatchPersonalInfo] = useReducer(
     personalInfoReducer,
@@ -54,11 +49,6 @@ function Personal() {
       type: name,
       val: value,
     });
-
-    // setInfo((prev) => ({
-    //   ...prev,
-    //   [name]: value,
-    // }));
   };
 
   const handleSave = () => {
@@ -67,9 +57,6 @@ function Personal() {
 
   const handleEdit = () => {
     setIsSaved(false);
-    // setInfo((prev) => ({
-    //   ...prev,
-    // }));
   };
 
   return (
@@ -86,7 +73,10 @@ function Personal() {
             handleSave={handleSave}
           />
         ) : (
-          <Display personalInfoState={personalInfoState} handleEdit={handleEdit} />
+          <Display
+            personalInfoState={personalInfoState}
+            handleEdit={handleEdit}
+          />
         )}
       </div>
     </div>
