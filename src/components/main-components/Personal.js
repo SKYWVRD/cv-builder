@@ -2,32 +2,29 @@ import { useState, useReducer } from "react";
 import defaultImage from "../../images/default-image.png";
 
 const personalInfoReducer = (state, action) => {
-  if (action.type === "name") {
-    return {
-      name: action.val,
-      surname: state.surname,
-      email: state.email,
-    };
-  }
-  if (action.type === "surname") {
-    return {
-      name: state.name,
-      surname: action.val,
-      email: state.email,
-    };
-  }
-  if (action.type === "email") {
-    return {
-      name: state.name,
-      surname: state.surname,
-      email: action.val,
-    };
-  }
 
+  let name = state.name;
+  let surname = state.surname;
+  let email = state.email;
+
+  switch(action.type){
+    case 'name':
+      name = action.val;
+      break;
+    case 'surname':
+      surname = action.val;
+      break;
+    case 'email':
+      email = action.val;
+      break;
+    default:
+      console.log(`Could not find action type ${action.type}`);
+  }
+  
   return {
-    name: "",
-    surname: "",
-    email: "",
+    name: name,
+    surname: surname,
+    email: email,
   };
 };
 
