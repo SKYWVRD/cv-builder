@@ -17,29 +17,28 @@ const experienceReducer = (state, action) => {
       break;
     case "dateStarted":
       dateStarted = action.val;
-    case "dateEnded":
+      break;
+    case "dateFinished":
       dateEnded = action.val;
-    case reference:
+      break;
+    case 'reference':
       reference = action.val;
+      break;
+    default:
+      console.log(`Could not find action type ${action.type}`)
+      break;
   }
   return {
-    companyName: state.companyName,
-    positionHeld: state.positionHeld,
-    dateStarted: state.dateStarted,
-    dateEnded: state.dateEnded,
-    reference: state.reference,
+    companyName: companyName,
+    positionHeld: positionHeld,
+    dateStarted: dateStarted,
+    dateEnded: dateEnded,
+    reference: reference,
   };
 };
 
 function Experience() {
   const [isSaved, setIsSaved] = useState(false);
-  // const [experienceInfo, setInfo] = useState({
-  //   companyName: "",
-  //   positionHeld: "",
-  //   dateStarted: "",
-  //   dateEnded: "",
-  //   reference: "",
-  // });
 
   const [experienceInfoState, dispatchExperienceInfo] = useReducer(
     experienceReducer,
@@ -63,10 +62,6 @@ function Experience() {
       type: name,
       val: value,
     });
-    // setInfo((prev) => ({
-    //   ...prev,
-    //   [name]: value,
-    // }));
   };
 
   return (
