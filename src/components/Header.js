@@ -1,14 +1,10 @@
 const Header = () => {
-    return(
-        <div className='header'>
-            <div className='logo'>
+  return (
+    <div className="header">
+      <div className="logo"></div>
+      <div className="header-text">CV-Inator</div>
+    </div>
+  );
+};
 
-            </div>
-            <div className='header-text'>
-                CV-Inator
-            </div>
-        </div>
-    )
-}
-
-export default Header
+export default Header;
