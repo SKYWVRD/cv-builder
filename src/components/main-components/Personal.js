@@ -1,14 +1,27 @@
 import { useState, useReducer } from "react";
 import defaultImage from "../../images/default-image.png";
 
-personalInfoReducer = (state, action) => {
-
-  if(action.name === 'name'){
-    return{
-      name: action.value,
+const personalInfoReducer = (state, action) => {
+  if (action.type === "name") {
+    return {
+      name: action.val,
       surname: state.surname,
       email: state.email,
-    }
+    };
+  }
+  if (action.type === "surname") {
+    return {
+      name: state.name,
+      surname: action.val,
+      email: state.email,
+    };
+  }
+  if (action.type === "email") {
+    return {
+      name: state.name,
+      surname: state.surname,
+      email: action.val,
+    };
   }
 
   return {
@@ -20,13 +33,13 @@ personalInfoReducer = (state, action) => {
 
 function Personal() {
   const [isSaved, setIsSaved] = useState(false);
-  const [personalInfo, setInfo] = useState({
-    name: "",
-    surname: "",
-    email: "",
-  });
+  // const [personalInfo, setInfo] = useState({
+  //   name: "",
+  //   surname: "",
+  //   email: "",
+  // });
 
-  const [personInfoState, dispatchPersonalInfo] = useReducer(
+  const [personalInfoState, dispatchPersonalInfo] = useReducer(
     personalInfoReducer,
     {
       name: "",
@@ -37,7 +50,6 @@ function Personal() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     dispatchPersonalInfo({
       type: name,
       val: value,
@@ -55,9 +67,9 @@ function Personal() {
 
   const handleEdit = () => {
     setIsSaved(false);
-    setInfo((prev) => ({
-      ...prev,
-    }));
+    // setInfo((prev) => ({
+    //   ...prev,
+    // }));
   };
 
   return (
@@ -69,27 +81,27 @@ function Personal() {
         </div>
         {!isSaved ? (
           <Form
-            personalInfo={personalInfo}
+            personalInfoState={personalInfoState}
             handleChange={handleChange}
             handleSave={handleSave}
           />
         ) : (
-          <Display personalInfo={personalInfo} handleEdit={handleEdit} />
+          <Display personalInfoState={personalInfoState} handleEdit={handleEdit} />
         )}
       </div>
     </div>
   );
 }
 
-const Display = ({ personalInfo, handleEdit }) => {
+const Display = ({ personalInfoState, handleEdit }) => {
   return (
     <div className="personal-form">
       <label htmlFor="name">Name:</label>
-      <div className="personal-display">{personalInfo.name}</div>
+      <div className="personal-display">{personalInfoState.name}</div>
       <label htmlFor="surname">Surname:</label>
-      <div className="personal-display">{personalInfo.surname}</div>
+      <div className="personal-display">{personalInfoState.surname}</div>
       <label htmlFor="Email">Email Address:</label>
-      <div className="personal-display">{personalInfo.email}</div>
+      <div className="personal-display">{personalInfoState.email}</div>
       <input
         className="submit-button"
         name="submit"
@@ -101,7 +113,7 @@ const Display = ({ personalInfo, handleEdit }) => {
   );
 };
 
-const Form = ({ personalInfo, handleChange, handleSave }) => {
+const Form = ({ personalInfoState, handleChange, handleSave }) => {
   //TODO: Update to be more dynamic so you have a single Form component without a display component
 
   return (
@@ -110,21 +122,21 @@ const Form = ({ personalInfo, handleChange, handleSave }) => {
       <input
         name="name"
         type="Text"
-        value={personalInfo.name}
+        value={personalInfoState.name}
         onChange={handleChange}
       />
       <label htmlFor="surname">Surname:</label>
       <input
         name="surname"
         type="Text"
-        value={personalInfo.surname}
+        value={personalInfoState.surname}
         onChange={handleChange}
       />
       <label htmlFor="Email">Email Address:</label>
       <input
         name="email"
         type="Text"
-        value={personalInfo.email}
+        value={personalInfoState.email}
         onChange={handleChange}
       />
       <input
