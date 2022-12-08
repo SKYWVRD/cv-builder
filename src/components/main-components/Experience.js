@@ -117,12 +117,12 @@ const Form = ({ experienceInfoState, isSaved, handleSaved, handleChange }) => {
       )}
       <label htmlFor="dateFinished">End Date</label>
       {isSaved ? (
-        <div className="dateFinished">{experienceInfoState.dateFinished}</div>
+        <div className="dateFinished">{experienceInfoState.dateEnded}</div>
       ) : (
         <input
           name="dateFinished"
           type="date"
-          value={experienceInfoState.dateFinished}
+          value={experienceInfoState.dateEnded}
           onChange={handleChange}
         />
       )}
